@@ -1,0 +1,33 @@
+Remarques :
+
+L'argumentation dans les travaux vedge-1, vedge-2, zoo-1, zoo-3 n'est pas adéquate et on est pas d'accord avec leurs décisions concernant la scénarisation et la hiérarchisation donc on ne peut pas les critiquer parce que on n'a pas leurs raisons. (Pour zoo-3 on dirait que l'auteur parle d'un autre prototype. Pour le vedge-2, il a quelques styles et il est un peu responsive choses qui ne doivent pas être dans un prototype. Il y a un autre qui contient de JavaScript.). La majorité ont prêt la liberté de modifier le texte fourni et de découper les sections fournies sans le mentionner dans l'argumentaire.
+
+Donc, on a choisi le travail zoo-1, parce que, visuellement, c'est le travail qui répond le plus au consignes de TP1.
+
+On va faire une maquette à partir de son travail, on va essayer de répliquer ce qu'il a fait pour un écran desktop. Mais on va faire notre propre CSS parce qu'on va utiliser la méthode CUBE CSS (il n'a pas utilisé une méthode connue), et qu'on va faire quelques ajustements à son HTML et surtout parce qu'on va approcher le CSS en "mobile first".
+
+On va changer un peu le langage graphique, surtout en terme d'espacement et de rythme pour le rendre plus cohérent.
+
+Argumentaire HTML :
+
+-	On ne comprend pas pourquoi utiliser un div.wrapper alors qu'un main  est sémantiquement plus adéquat.
+
+-	On a fait des ajustements dans la section deux pour faire un carrousel avec CSS.
+
+-	On a changé le HTML dans nav pour qu'il soit plus sémantique.
+
+-	On a enlevé les commentaires : "section 1, section 2, section 3..."? ça ne rajoute aucune information.
+
+-	On ne comprend pas pourquoi utiliser des boutons dans les sections apprenez-en-plus? on les a changés en lien.
+
+-	Sur la .section3, il a fait un UL pour deux actions et un lien pour la dernière action, alors que le client nous a donné ces actions dans une seule liste (tous les actions dans le même niveau). 
+
+-	Aussi le premier li dans la liste précédente est stylé comme un heading, pourquoi? (On a enlevé UL )
+
+-	À quoi sert la classe .buttonStyle?
+
+-	Pourquoi le texte "venez voir nos lynx et carajous en liberté!" est un lien? il fait partie du titre.
+
+-	Il a renversé l'ordre de "Le Zoo de Val-Jalbert met en vedette les animaux québécois les plus sournois et ce, dans un décor forestier enchanteur." et "Venez vous promener librement au milieu des lynx, carcajous et ours bruns." pourquoi?
+
+-	Pourquoi mettre les liens de sous menu principal dans le pied de page au lieu de la navigation principale ?

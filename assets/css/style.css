@@ -1,0 +1,545 @@
+:root {
+
+    /* coleurs */
+    --couleur-principal: #565667;
+
+    --noir-transparent: #0c0c0ca8;
+
+    --special-pale: #f8e0b9;
+
+    --main-orange: #ff5722;
+    --couleur-survol-principal: #f53c04;
+    --couleur-survol-secondaire: #ffee58;
+
+    /* font-size et gutter, source type-scale.com #####################################################################*/
+    /* font size scale, 1.250 – Major Third ###########################################################################*/
+    --texte-1000: 4.5rem;
+    --texte-900: 3.052rem;
+    --texte-800: 2.441rem;
+    --texte-700: 1.953rem;
+    --texte-600: 1.563rem;
+    --texte-500: 1.25rem;
+    --texte-400: 1rem;
+    --texte-300: 0.8rem;
+    --texte-200: 0.64rem;
+    --texte-100: 0.512rem;
+
+    /* gutter 1.414 – Augmented Fourth ##################################################################################*/
+    --goutiere-1000: 5.653rem;
+    --goutiere-800: 3.998rem;
+    --goutiere-600: 2.827rem;
+    --goutiere-400: 1.999rem;
+    --goutiere-300: 1.414rem;
+    --goutiere-200: 1rem;
+    --goutiere-100: 0.707rem;
+
+    line-height: 1.5625;
+}
+
+body {
+    font-family: "Merienda", sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+body * {
+    font-size: inherit;
+    box-sizing: border-box;
+    vertical-align: top;
+
+    margin: 0;
+    padding: 0;
+}
+
+main>section {
+    margin-top: var(--goutiere-800);
+}
+
+body>article>header,
+body>main>*>*,
+body>footer>*>* {
+    padding: 0 var(--goutiere-200);
+}
+
+main>*>*+* {
+    margin-top: var(--goutiere-300);
+}
+
+/* regles generiques ################################################################################################### */
+
+/* Background de l'image, source: l'exercice vu en classe ########################################################################*/
+picture {
+    display: block;
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    background-color: gainsboro;
+}
+
+picture img {
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Aclonica", sans-serif;
+    line-height: 1.25;
+    font-weight: 500;
+    max-width: 40ch;
+}
+
+h1 {
+    font-size: var(--texte-700);
+    max-width: 40ch;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: var(--texte-700);
+}
+
+h3 {
+    font-size: var(--texte-600);
+}
+
+h4 {
+    font-size: var(--texte-400);
+}
+
+a,
+button {
+    line-height: 1.6;
+    font-size: var(--texte-400);
+    font-family: inherit;
+    color: initial;
+    background-color: transparent;
+
+    border: none;
+
+    display: inline-block;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    color: inherit;
+}
+
+a {
+    padding: 0;
+}
+
+:is(a, button):hover,
+:is(a, button):focus {
+    outline: none;
+}
+
+a:not([class]):hover,
+a:not([class]):focus {
+    text-decoration: underline
+}
+
+/* classes utilitaires */
+.appel-action {
+    background-color: var(--main-orange);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.appel-action:hover,
+.appel-action:focus {
+    background-color: var(--couleur-survol-principal);
+    text-decoration: none;
+}
+
+/* horizontally scrolling elements */
+.flex-scroll {
+    display: flex;
+    flex-flow: row;
+    overflow-x: auto;
+    justify-content: flex-start;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    gap: var(--goutiere-300);
+}
+
+.flex-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.flex-scroll-item {
+    position: relative;
+    flex: 0 0 70vw;
+    max-width: 18rem;
+    scroll-snap-align: center;
+}
+
+.flex-scroll-item picture {
+    aspect-ratio: .8;
+}
+
+.flex-scroll-item footer {
+    position: absolute;
+    inset: 65% 0 0 0;
+    background-color: var(--noir-transparent);
+}
+
+@media (max-width:375px) {
+    .flex-scroll-item footer {
+        inset: 50% 0 0 0;
+    }
+}
+
+.flex-scroll-item h4 {
+    text-align: center;
+    padding: var(--goutiere-100);
+    color: inherit;
+    font-size: var(--texte-500);
+}
+
+.flex-scroll-item img {
+    aspect-ratio: 1.8;
+}
+
+
+/* navigation principal */
+nav {
+    padding: var(--goutiere-100);
+    background-color: var(--noir-transparent);
+    color: white;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+nav>button {
+    float: right;
+}
+
+nav>button:focus {
+    pointer-events: none;
+}
+
+nav>div {
+    background-color: var(--noir-transparent);
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    width: min(30rem, 100%);
+    transition: .25s all ease-in-out;
+}
+
+nav>button:focus+div {
+    opacity: 1;
+    pointer-events: initial;
+}
+
+nav>div *:not(div, span) {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #393939;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav>div *:not(div, span):hover {
+    color: inherit !important;
+    text-decoration: underline;
+}
+
+nav div button {
+    display: none;
+}
+
+.logo {
+    color: transparent;
+    padding: 0.5em 1em;
+    background-image: url(imgs/logo.svg);
+    background-size: 3.25rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 5rem;
+}
+
+nav .appel-action {
+    width: max-content;
+    margin: var(--goutiere-100) auto;
+}
+
+
+/* entete principale */
+body>article {
+    position: relative;
+}
+
+body>article>picture {
+    max-height: 46rem;
+}
+
+body>article img {
+    object-position: 0px;
+}
+
+body>article>header {
+    position: absolute;
+    inset: 0;
+    background-color: #00000029;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    color: white;
+    padding-bottom: var(--goutiere-300);
+}
+
+body>article h2 br {
+    display: none;
+}
+
+
+/* apprenez en plus sur Val-Jalbert */
+.a-lire {
+    background-color: #3b9b4d;
+    border-radius: 1rem;
+    overflow: hidden;
+    color: white;
+}
+
+.a-lire a::after {
+    content: "";
+    inset: 0 0 0 0;
+    position: absolute;
+}
+
+.a-lire a {
+    margin: 0 var(--goutiere-100) var(--goutiere-200) var(--goutiere-100);
+    order: 2;
+    text-decoration: none;
+}
+
+.a-lire a:hover,
+.a-lire a:focus {
+    color: var(--couleur-survol-secondaire);
+}
+
+
+/* apprenez en plus sur Val-Jalbert */
+.aidez-nous picture {
+    height: 25rem;
+    padding: 0;
+}
+
+.aidez-nous *+*:not(img) {
+    margin-top: var(--goutiere-200);
+}
+
+
+/* promotions */
+.promotions {
+    background-color: var(--special-pale);
+}
+
+.promotions>article {
+    background-color: var(--special-pale);
+    padding: var(--goutiere-200);
+}
+
+.promotions>article .appel-action {
+    margin: var(--goutiere-600) auto var(--goutiere-800) auto;
+    display: block;
+    width: fit-content;
+}
+
+.promotions>article>*+*:not(a) {
+    margin-top: var(--goutiere-300);
+}
+
+
+/* footer */
+body>footer {
+    padding-top: var(--goutiere-600);
+    padding-bottom: var(--goutiere-600);
+    background-color: #000;
+    color: white;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
+body>footer>*+* {
+    margin-top: var(--goutiere-300);
+}
+
+body>footer>div>* {
+    display: block;
+    text-decoration: none;
+}
+
+body>footer h4 {
+    color: inherit;
+    font-size: var(--texte-500);
+    margin-bottom: var(--goutiere-100);
+}
+
+
+/* media queries for responsive design -------------------------------------------------------------------- */
+@media screen and (min-width: 501px) {
+
+    main>section {
+        margin-top: var(--goutiere-1000);
+    }
+
+    .dual-flex {
+        display: flex;
+        flex-flow: row wrap;
+        place-items: stretch;
+        /* align-items: flex-start; */
+        row-gap: var(--goutiere-300);
+    }
+
+    .dual-flex>header {
+        min-width: 100%;
+    }
+
+    .dual-flex>*:not(header) {
+        flex: 1 1 20rem;
+        margin: 0 var(--goutiere-200);
+    }
+}
+
+
+@media screen and (min-width: 600px) {
+    body>footer {
+        flex-flow: row;
+    }
+
+    body>footer>* {
+        margin: var(--goutiere-100);
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1149px) {
+    .promotions>article {
+        padding: var(--goutiere-400);
+    }
+}
+
+@media screen and (min-width: 1151px) {
+    :root {
+        --goutiere-1000: 7.653rem;
+    }
+
+    h1 {
+        font-size: var(--texte-1000);
+    }
+
+    h2 {
+        font-size: var(--texte-800);
+    }
+
+    h3 {
+        font-size: var(--texte-600);
+    }
+
+    h4 {
+        font-size: var(--texte-500);
+    }
+
+
+    body>main {
+        width: min(80rem, 90%);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .flex-scroll-item {
+        margin: var(--goutiere-100) 0;
+        transition: all .2s ease-in-out;
+    }
+
+    .flex-scroll-item:hover,
+    .flex-scroll-item:focus {
+        transform: scale(1.0125);
+    }
+
+
+    nav {
+        display: flex;
+        padding-top: var(--goutiere-100);
+        padding-bottom: var(--goutiere-100);
+    }
+
+    nav .appel-action {
+        margin: 0 auto;
+    }
+
+    nav>button {
+        display: none;
+    }
+
+    nav>div {
+        display: contents;
+        pointer-events: initial;
+    }
+
+    nav>div *:not(span) {
+        position: relative;
+        display: inline-block;
+        border-bottom: none;
+    }
+
+    nav>div span {
+        display: none;
+        background-color: var(--noir-transparent);
+        position: absolute;
+        padding-bottom: var(--goutiere-200);
+    }
+
+    nav>div>div:focus-within span,
+    nav>div>div:hover span {
+        display: block;
+    }
+
+    nav>div span a {
+        display: block;
+    }
+
+
+    .promotions {
+        background-color: transparent;
+    }
+
+
+    body>article h2 br {
+        display: initial;
+    }
+
+    body>article>header {
+        padding: var(--goutiere-400) 10%;
+    }
+
+    body>article:nth-of-type(2) {
+        margin-top: var(--goutiere-800);
+    }
+
+    body>footer>* {
+        margin: 0;
+    }
+
+}
+
+@media screen and (min-width: 1700px) {
+    /* selon notre design il y a rien a mettre ici, pour l'instant */
+}
